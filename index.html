@@ -1,146 +1,35 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html data-lt-installed=true style="" lang="en-US">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokédex</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #000000; /* Rojo oscuro */
-      color: #fff; /* Texto blanco */
-    }
-    .pokemon-container {
-      margin-top: 20px;
-    }
-    .pokemon-img {
-      max-width: 200px;
-    }
-    .controls {
-      margin-top: 20px;
-    }
-    button, input[type="checkbox"] {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      background-color: #333; /* Gris oscuro */
-      color: #fff; /* Texto blanco */
-      cursor: pointer;
-      margin: 0 5px;
-    }
-    button:hover, input[type="checkbox"]:hover {
-      background-color: #555; /* Gris más oscuro */
-    }
-    input[type="text"] {
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      width: 150px;
-      text-align: center;
-    }
-  </style>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width,initial-scale=1">
+    <meta name=theme-color content=#000000>
+    <meta name=description content="Julián Perez - Personal page">
+    <meta property=twitter:image content=/social-image.png>
+    <meta property=og:image content=/social-image.png>
+    <title>Julián Perez</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 </head>
+
 <body>
-  <h1>Pokédex</h1>
+    <noscript class=sf-hidden>You need to enable JavaScript to run this app!</noscript>
+    <div id=home class="title bg-transparent bgstyle text-light min-vh-100 d-flex align-content-center align-items-center flex-wrap m-0 jumbotron jumbotron-fluid" style="overflow:hidden;background:rgba(0,0,0,0) linear-gradient(136deg,rgb(68,132,206),rgb(26,215,192),rgb(255,155,17),rgb(155,89,182),rgb(255,127,127),rgb(236,240,241)) repeat scroll 0% 0% / 1200% 1200%">
+    <div id=stars></div>
+        <div class="text-center container">
+            <h1 class=display-1>Julián Perez</h1>
+            <div class="Typist lead typist">Profesional en Automatización de Procesos en Windows</div>
+            <p>Desde aplicaciones ofimáticas hasta juegos, estadísticas, análisis de web y creación de programas y scripts personalizados para cualquier tipo de trabajo en sistemas informáticos. Especializado en mantenimiento avanzado y optimización perfecta de sistemas.</p>
+            <div class=p-5>
+                <a target=_blank rel="noopener noreferrer" aria-label="Julián Perez WhatsApp" href="https://wa.me/+5492994194401"><i class="fab fa-whatsapp fa-3x socialicons"></i></a>
+                <a target=_blank rel="noopener noreferrer" aria-label="Julián Perez Facebook" href=https://facebook.com/juuliann.perez><i class="fab fa-facebook fa-3x socialicons"></i></a>
+                <a target=_blank rel="noopener noreferrer" aria-label="Julián Perez GitHub" href=https://github.com/ositomalvado><i class="fab fa-github fa-3x socialicons"></i></a>
+                <a target=_blank rel="noopener noreferrer" aria-label="Julián Perez YouTube" href=https://www.youtube.com/@kaelvoker5670><i class="fab fa-youtube fa-3x socialicons"></i></a>
+                <a target=_blank rel="noopener noreferrer" aria-label="Julián Perez LinkedIn" href=https://linkedin.com/in/julián-perez-a7767718a/><i class="fab fa-linkedin fa-3x socialicons"></i></a>
 
-  <div class="controls">
-    <button id="prevBtn">←</button>
-    <input type="text" id="pokemonNumber" placeholder="Enter Pokemon Number">
-    <button id="searchBtn">Search</button>
-    <button id="playBtn">Play</button>
-    <label for="shinyToggle">Shiny:</label>
-    <input type="checkbox" id="shinyToggle">
-    <button id="nextBtn">→</button>
-  </div>
-
-  <div class="pokemon-container">
-    <img src="" alt="Pokemon" id="pokemonImg" class="pokemon-img">
-  </div>
-
-  <script>
-let index = 1;
-let audioUrl = '';
-let imagen = '';
-let imagenShiny = '';
-
-const preFetchPokemon = (offset) => {
-  const promises = [];
-  for (let i = 1; i <= 5; i++) {
-    const pokemonIndex = index + offset * i;
-    if (pokemonIndex > 0) {
-      const url = `https://pokeapi.co/api/v2/pokemon/${pokemonIndex}`;
-      promises.push(fetch(url).then(response => response.json()));
-    }
-  }
-  return Promise.all(promises);
-};
-
-const fetchPokemon = () => {
-  const url = `https://pokeapi.co/api/v2/pokemon/${index}`;
-
-  fetch(url)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Pokemon:', data);
-      audioUrl = data.cries.legacy;
-      imagen = data.sprites.front_default;
-      imagenShiny = data.sprites.front_shiny;
-      displayPokemon();
-    })
-    .catch(error => {
-      console.error('There was a problem with your fetch operation:', error);
-    });
-
-  preFetchPokemon(-1); // Precargar hacia arriba
-  preFetchPokemon(1); // Precargar hacia abajo
-};
-
-    const displayPokemon = () => {
-      const pokemonImg = document.getElementById('pokemonImg');
-      const shinyToggle = document.getElementById('shinyToggle');
-
-      if (shinyToggle.checked) {
-        pokemonImg.src = imagenShiny;
-      } else {
-        pokemonImg.src = imagen;
-      }
-    };
-
-    document.getElementById('searchBtn').addEventListener('click', () => {
-      const pokemonNumber = document.getElementById('pokemonNumber').value;
-      if (pokemonNumber !== '') {
-        index = parseInt(pokemonNumber);
-        fetchPokemon();
-      }
-    });
-
-    document.getElementById('prevBtn').addEventListener('click', () => {
-      index = Math.max(1, index - 1);
-      fetchPokemon();
-    });
-
-    document.getElementById('nextBtn').addEventListener('click', () => {
-      index++;
-      fetchPokemon();
-    });
-
-    document.getElementById('playBtn').addEventListener('click', () => {
-      const audio = new Audio(audioUrl);
-      audio.play();
-    });
-
-    document.getElementById('shinyToggle').addEventListener('change', () => {
-      displayPokemon();
-    });
-
-    // Fetch the initial Pokemon
-    fetchPokemon();
-  </script>
+            </div>
+            <a class="btn btn-outline-light btn-lg" role=button aria-label="Contacto" href="mailto:pz.julian@outlook.com.ar" target="_blank">Contacto</a>
+        </div>
+    </div>
 </body>
 </html>
