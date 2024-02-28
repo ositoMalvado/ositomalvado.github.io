@@ -36,10 +36,20 @@
 .fa-whatsapp:before {
     content: "\f232";
 }
-
+.fa-envelope:before {
+    content: "\f232"; /* Código correspondiente al ícono del sobre de carta en FontAwesome */
+}
 .fa-youtube:before {
     content: "\f167";
 }
+
+.svg-container {
+    width: 3rem; /* Tamaño deseado */
+    height: 3rem; /* Tamaño deseado */
+    display: inline-block;
+    vertical-align: middle;
+}
+
 @font-face {
     font-family: "Font Awesome 5 Brands";
     font-style: normal;
@@ -53,16 +63,16 @@
 
 
 :root {
-    --blue: #0056b3; /* Adjusted to a darker shade of blue */
-    --indigo: #4c4c9f; /* Adjusted to a darker shade of indigo */
-    --purple: #4b3380; /* Adjusted to a darker shade of purple */
-    --pink: #bb2a6b; /* Adjusted to a darker shade of pink */
-    --red: #a82e38; /* Adjusted to a darker shade of red */
-    --orange: #cc6110; /* Adjusted to a darker shade of orange */
-    --yellow: #d7a000; /* Adjusted to a darker shade of yellow */
+    --blue: #003670; /* Adjusted to a darker shade of blue */
+    --indigo: #2b2b5a; /* Adjusted to a darker shade of indigo */
+    --purple: #25193f; /* Adjusted to a darker shade of purple */
+    --pink: #6b173d; /* Adjusted to a darker shade of pink */
+    --red: #641b21; /* Adjusted to a darker shade of red */
+    --orange: #693107; /* Adjusted to a darker shade of orange */
+    --yellow: #8b6901; /* Adjusted to a darker shade of yellow */
     --green: #1c7a35; /* Adjusted to a darker shade of green */
     --teal: #147c67; /* Adjusted to a darker shade of teal */
-    --cyan: #0d7a89; /* Adjusted to a darker shade of cyan */
+    --cyan: #074149; /* Adjusted to a darker shade of cyan */
     --white: #ccc; /* Adjusted to a darker shade of white */
     --gray: #4d5258; /* Adjusted to a darker shade of gray */
     --gray-dark: #23282d; /* Adjusted to a darker shade of dark gray */
@@ -125,18 +135,20 @@ a:not([href]):not([class]):hover {
     font: inherit;
     -webkit-appearance: button;
 }
-h1 {
-    margin-bottom: 0.5rem;
-}
 .lead {
-    font-size: 1.25rem;
-}
-.lead {
+    font-size: 1.5rem;
     font-weight: 300;
+    
+    text-shadow: 9px 9px 12px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.2);
 }
 .display-1 {
     font-weight: 300;
     line-height: 1.2;
+    text-shadow: 9px 9px 12px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    margin-bottom: 0.5rem;
 }
 .container {
     width: 100%;
@@ -165,6 +177,34 @@ h1 {
         max-width: 1140px;
     }
 }
+
+@keyframes expandShrink {
+    0%, 100% {
+        transform: scale(1); /* Tamaño normal */
+    }
+    50% {
+        transform: scale(1.05); /* Tamaño aumentado */
+    }
+}
+
+.elegant-box {
+    background: linear-gradient(to bottom right, #57092381, #6700869d);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    color: white;
+    max-width: 600px;
+    margin: 0 auto;
+    animation: expandShrink 20s infinite; /* Aplicar la animación con una duración de 20 segundos y repetirla infinitamente */
+}
+
+#infoText p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+
 .btn {
     display: inline-block;
     font-weight: 400;
@@ -425,7 +465,7 @@ body {
     height: 100%;
     left: 0;
     right: 0;
-    color: #fff;
+    color: #ffffff;
     text-align: center;
     margin-top: 0;
 }
@@ -547,4 +587,11 @@ body {
 }
 .sf-hidden {
     display: none !important;
+}
+
+
+#link-cont {
+    font-weight: bold;
+    color: white;
+    font-size: 0.8rem; /* Puedes ajustar el tamaño según sea necesario */
 }
