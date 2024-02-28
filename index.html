@@ -10,6 +10,8 @@
     <meta property=og:image content=/social-image.png>
     <title>Julián Perez</title>
     <link rel="stylesheet" href="main.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         integrity="sha384-OrlSbZRb3w21KfY9VvfPb7N8EZxeDSceowbDTj9xouq0wBRXme7tOv3k/cXjjSGC" crossorigin="anonymous">
@@ -37,7 +39,7 @@
             <br>
             <hr>
             <br>
-            <div >
+            <div>
                 <a target="_blank" rel="noopener noreferrer" aria-label="Julián Perez WhatsApp"
                     href="https://wa.me/+5492994194401"><i class="fab fa-whatsapp fa-3x socialicons"></i></a>
                 <!-- <a target="_blank" rel="noopener noreferrer" aria-label="Julián Perez Facebook"
@@ -49,14 +51,14 @@
                 <a target="_blank" rel="noopener noreferrer" aria-label="Julián Perez LinkedIn"
                     href="https://linkedin.com/in/julián-perez-a7767718a"><i
                         class="fab fa-linkedin fa-3x socialicons"></i></a>
-                <a target="_blank" rel="noopener noreferrer" aria-label="Correo electrónico"
-                    href="mailto:pz.julian@outlook.com.ar">
-                    <br>
-                    <br><div id='link-cont'>pz.julian@outlook.com.ar</div>
-                </a>
+                <br>
+                <br>
+                <div id='link-cont' onclick="copyToClipboard()">pz.julian@outlook.com.ar</div>
             </div>
         </div>
     </div>
+    
+    <script src="script.js"></script>
 </body>
 
 </html>
