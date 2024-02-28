@@ -186,17 +186,18 @@ h1 {
         transform: scale(1.05); /* Tamaño aumentado */
     }
 }
-
 .elegant-box {
     background: linear-gradient(to bottom right, #57092381, #6700869d);
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
     color: white;
-    max-width: 600px;
+    width: 80%; /* Establecer el ancho al 80% del ancho visible de la página */
+    max-width: 800px; /* Establecer el ancho máximo para asegurar que no se extienda demasiado en pantallas grandes */
     margin: 0 auto;
     animation: expandShrink 20s infinite; /* Aplicar la animación con una duración de 20 segundos y repetirla infinitamente */
 }
+
 
 #infoText p {
     margin: 0;
